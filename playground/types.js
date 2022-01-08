@@ -39,3 +39,12 @@ const kids = 3;
 const eachKidGets = Math.floor(smarties / kids);
 const dadGets = smarties % kids;
 console.log(`Each kid gets ${eachKidGets}`);
+
+
+const person = {
+    'first': 'wes',
+    'last': 'bos',
+    'age': 100
+}
+
+console.log(person.age)
