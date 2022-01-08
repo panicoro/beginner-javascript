@@ -48,3 +48,23 @@ const person = {
 }
 
 console.log(person.age)
+
+let dog;
+console.log(dog);
+dog = 'snikers';
+console.log(dog);
+
+let someThingUndefined;
+const somethingNull = null;
+
+const cher = {
+    'first': 'cher'
+}
+
+const teller = {
+    first: 'Raymond',
+    last: 'Teller'
+  }
+  
+  teller.first = 'Teller';
+  teller.last = null;
