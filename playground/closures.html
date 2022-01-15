@@ -9,7 +9,42 @@
 </head>
 
 <body>
+  <script>
+    // function outer() {
+    //   const outerVar = 'Hey I am the outer var';
+    //   function inner() {
+    //     const innerVar = 'Hey I am the inner var';
+    //     console.log(innerVar);
+    //     console.log(outerVar);
+    //   }
+    //   return inner();
+    // }
+    // const innerFn = outer();
+    // innerFn();
 
+    // function createGreeting(greeting = '') {
+    //   const myGreet = greeting.toUpperCase();
+    //   return function (name) {
+    //     return `${myGreet} ${name}`;
+    //   };
+    // }
+    // const sayHello = createGreeting('Hello');
+    // const sayHey = createGreeting('Hey');
+    // console.log(sayHello('wes'));
+    // console.log(sayHello('kait'));
+    // console.log(sayHey('kait'));
+
+    function createGame(gameName) {
+      let score = 0;
+      return function win() {
+        score += 1;
+        return `Your game ${gameName} score is ${score}`;
+      };
+    }
+    const soccerGame = createGame('Soccer');
+    soccerGame();
+    soccerGame();
+  </script>
 </body>
 
 </html>
