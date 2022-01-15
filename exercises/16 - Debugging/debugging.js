@@ -5,8 +5,14 @@ const people = [
 ];
 
 people.forEach((person, index) => {
+  debugger;
   console.log(person.name);
+  if (person.name === 'Wes') {
+    console.error('Dumb name');
+  }
 });
+
+console.table(people);
 
 // Console Methods
 
@@ -24,7 +30,16 @@ people.forEach((person, index) => {
 
 // Some Setup Code
 
+function doALotOfStuff() {
+  console.group('Doing some stuff');
+  console.log('Hey Im one');
+  console.log('watch out');
+  console.error('hey');
+  console.groupEnd('Doing some stuff');
+}
+
 function doctorize(name) {
+  // console.count(`Runnig doctorize for ${name}`);
   return `Dr. ${name}`;
 }
 
@@ -39,7 +54,7 @@ function go() {
 }
 
 const button = document.querySelector('.bigger');
-button.addEventListener('click', function(e) {
+button.addEventListener('click', (e) => {
   const newFontSize =
     parseFloat(getComputedStyle(e.currentTarget).fontSize) + 1;
   e.currentTarget.style.fontSize = `${newFontSize}px`;
