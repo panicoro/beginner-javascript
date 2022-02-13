@@ -83,6 +83,8 @@ const cards = document.querySelectorAll('.playerCard');
 for (let i = 0; i < cards.length; i += 1) {
   const button = document.createElement('button');
   button.innerText = 'Delete';
+  button.classList.add('delete');
+  button.type = 'button';
   button.addEventListener('click', () => {
     cards[i].remove();
   });
