@@ -66,7 +66,7 @@ function clearCanvas() {
   ctx.clearRect(0, 0, width, height);
   canvas.addEventListener(
     'animationend',
-    function() {
+    () => {
       console.log('Done the shake!');
       canvas.classList.remove('shake');
     },
