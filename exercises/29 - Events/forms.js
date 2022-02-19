@@ -21,7 +21,7 @@ sigupForm.addEventListener('submit', (event) => {
   console.log(name);
   // console.log(event.currentTarget.name.value);
   // console.log(event.currentTarget.email.value);
-  // console.log(event.currentTarget.agree.checked);wesbos@gmail.com
+  // console.log(event.currentTarget.agree.checked);
   if (name.includes('chad')) {
     alert('Sorry bro');
     event.preventDefault();
