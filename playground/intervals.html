@@ -9,7 +9,51 @@
 </head>
 
 <body>
+  <script>
+    function buzzer() {
+      console.log('ENNNNNGGGG');
+    }
+    // console.log('Staring');
+    // setTimeout(buzzer, 2000);
+    // console.log('Finishing');
 
+    setInterval(buzzer, 2000);
+
+    function setImmediateIterval(funcToRun, ms) {
+      // right awqy call that function
+      funcToRun();
+      // run a regular interval
+      setInterval(funcToRun, ms);
+    }
+
+    setImmediateIterval(buzzer, 2000);
+
+    /*
+    function sayHi() {
+      console.log('Heeyyy');
+    }
+    */
+
+    // setImmediateIterval(sayHi, 2000);
+    function destroy() {
+      document.body.innerHTML = '<p>DESTROYED</p>';
+    }
+    const boomTimer = setTimeout(destroy, 2000);
+
+    window.addEventListener('click', () => {
+      console.log('You clicked! You saved the world!');
+      clearTimeout(boomTimer);
+    });
+
+    const popInterval = setInterval(() => {
+      console.log('💩');
+      console.log('Hehehe');
+    }, 1000);
+
+    setTimeout(() => {
+      clearInterval(popInterval);
+    }, 5000);
+  </script>
 </body>
 
 </html>
