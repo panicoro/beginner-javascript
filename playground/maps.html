@@ -9,8 +9,53 @@
 </head>
 
 <body>
-  <script>
+  <ul class="prizes">
 
+  </ul>
+  <script>
+    const person1 = {
+      name: 'wes',
+      age: 200,
+    };
+
+    const myMap = new Map();
+    // .set()
+    myMap.set('name', 'wes');
+    // only add age as a property
+    myMap.age = 100;
+    myMap.set(100, 'This is a number');
+    myMap.set(person1, 'Really cool');
+    console.log(myMap);
+
+    // Get the informacion by using the object
+    console.log(myMap.get(person1));
+
+    const score = 200;
+    const prizes = new Map();
+
+    prizes.set(100, 'Bear');
+    prizes.set(200, 'Duck');
+    prizes.set(300, 'Car');
+    console.log(`You win a ${prizes.get(score)}`);
+
+    // size of a map
+    console.log(myMap.size);
+
+    // IMPORTANT: Maps maintain the order of the stored elements in there
+
+    // Select that ul
+    const ul = document.querySelector('.prizes');
+    // Add the items one by one
+    for (const [points, prize] of prizes) {
+      const li = `<li>${points} - ${prize}</li>`;
+      ul.insertAdjacentHTML('afterbegin', li);
+    }
+
+    // Map used for maintain the order of the elements
+    // We cannot put function (called mathods) inside an object
+    // JSON.stringify(object) => Return json format data
+    // JSON.parse(json_string) => Return an object
+    // Object.fromEntries(myMap) => Rerurn an object from the map
   </script>
 </body>
 
