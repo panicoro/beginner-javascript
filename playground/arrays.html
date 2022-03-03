@@ -11,7 +11,93 @@
 </head>
 
 <body>
+  <script>
+    // Array literal syntax
+    const names = ['wes', 'kait', 'snikers'];
+    // And array has not keys and are object
+    console.log('The type is:', typeof names);
+    // Arrays are zero-index-based
+    // So this is give us the first element
+    console.log(names[0]);
+    // To see how many items are in the array
+    console.log('Array length is:', names.length);
+    // To get the last element
+    console.log('The last one element is:', names[names.length - 1]);
 
+    // Add an element inside the array
+    names.push('lux');
+    console.log(names);
+    // This is another form to do it
+    const names2 = [...names, 'lux'];
+    console.log(names2);
+    names.unshift('poppy');
+    console.log(names);
+    const names3 = ['poppy', ...names];
+    console.log(names3);
+
+    /* const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+    console.log(numbers);
+    numbers.splice(3, 2);
+    console.log(numbers);
+    */
+
+    const bikes = ['bianchi', 'miele', 'panasonic', 'miyata'];
+    const newBikes = [...bikes.slice(0, 2), 'benotto', ...bikes.splice(2)];
+    console.log(newBikes);
+
+    const newBikes2 = [...newBikes.splice(0, 3), ...newBikes.splice(0)];
+    console.log(newBikes2);
+
+    const commentsValues = [
+      { text: 'Cool Beans', id: 123 },
+      { text: 'Love this', id: 233 },
+      { text: 'Neato', id: 333 },
+      { text: 'Good bikes', id: 433 },
+      { text: 'So good', id: 533 },
+    ];
+
+    function deleteComments(id, comments) {
+      const commentIndex = comments.findIndex((comment) => comment.id === id);
+      // make a new array withoud that item in it
+      return [
+        ...comments.slice(0, commentIndex),
+        ...comments.slice(commentIndex + 1),
+      ];
+    }
+
+    const removedComments = deleteComments(533, commentsValues);
+    console.log(removedComments);
+
+    console.log(names);
+    const kaitIndex = names.findIndex((name) => name === 'kait');
+    console.log(names);
+    const newNamesWithoutKait = [
+      ...names.slice(0, kaitIndex),
+      ...names.slice(kaitIndex + 1),
+    ];
+    console.log(newNamesWithoutKait);
+    console.log(kaitIndex);
+    console.log(names[kaitIndex]);
+
+    /*
+    // Mutation Method
+    const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+    // Anytime you want to use a mutation method and NOT mutate the original array,
+    // we neeed to take a copy of the array
+    const numbersReverse = [...numbers].reverse();
+    // const numbersReverse = numbers.reverse();
+    console.log(numbersReverse);
+    // The original array has changed too...
+    console.log(numbers);
+
+    // Inmutable
+    const pizzaSlice = numbers.splice(2, 4);
+    console.log(pizzaSlice);
+    // The original array is the same
+    console.log(numbers);
+
+    */
+  </script>
 </body>
 
 </html>
