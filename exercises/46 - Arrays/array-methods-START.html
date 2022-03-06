@@ -87,38 +87,174 @@
     */
 
     // Display all bun types with " or " - use join()
+    console.log(buns.join(' or '));
 
     // We have a string "hot dogs,hamburgers,sausages,corn" - use split() to turn it into a string
+    const foodString = 'hot dogs,hamburgers,sausages,corn';
+    console.log(foodString.split(','));
 
     // take the last item off toppings with pop()
+    console.log(toppings);
+    const lastOne = toppings.pop();
+    console.log(lastOne);
+    console.log(toppings);
+
     // add it back with push()
+    toppings.push(lastOne);
+    console.log(toppings);
+
     // take the first item off toppings with shift()
+    console.log(toppings);
+    const firstOne = toppings.shift();
+    console.log(firstOne);
+    console.log(toppings);
+
     // add it back in with unshift()
+    toppings.unshift(firstOne);
+    console.log(toppings);
+
     // Do the last four,but immutable (with spreads and new variables)
+    let newToppings = toppings.slice(0, toppings.length - 1);
+    console.log(newToppings);
+    newToppings = [...newToppings, toppings[toppings.length - 1]];
+    console.log(newToppings);
+
+    let newToppingsFront = toppings.slice(1, toppings.length);
+    console.log(newToppingsFront);
+    newToppingsFront = [toppings[0], ...newToppingsFront];
+    console.log(newToppingsFront);
 
     // Make a copy of the toppings array with slice()
+    const copyToppings = toppings.slice(0);
+    toppings[0] = 'Mushy Boi';
+    console.log('Original:', toppings);
+    console.log('Copy:', copyToppings);
+
     // Make a copy of the toppings array with a spread
+    const secondCopy = [...toppings];
+    console.log(secondCopy);
+
     // take out items 3 to 5 of your new toppings array with splice()
+    copyToppings.splice(2, 3);
+    console.log(copyToppings);
+
     // find the index of Avocado with indexOf() / lastIndexOf()
+    const avoIndex = toppings.indexOf('Avocado');
+    console.log(avoIndex);
+    const wes = { name: 'wes' };
+    const people = [{ name: 'scott' }, wes];
+    // This returns 1, which is correct...
+    console.log(people.indexOf(wes));
+    // This returns -1, because they are not the same things...
+    console.log(people.indexOf({ name: 'scott' }));
+
     // Check if hot sauce is in the toppings with includes()
+    const isInToppings = toppings.includes('Hot Sauce');
+    console.log(isInToppings);
+
     // add it if it's not
+    if (!isInToppings) {
+      toppings.push('Hot Sauce');
+    }
+    console.log(toppings);
+
     // flip those toppings around with reverse()
+    toppings.reverse();
+    console.log(toppings);
+    const toppingReversed = [...toppings].reverse();
+    console.log(toppingReversed);
 
     /*
       Callback Methods
     */
 
     // find the first rating that talks about a burger with find()
+
+    // const burgRatingArrow = (feed) => feed.comment.includes('burg');
+
+    /*
+    function findBurgRating(feed, i, array) {
+      return feed.comment.includes('burg');
+    }
+    
+    const burgRatingArrow = (feed) => {
+      return feed.comment.includes('burg');
+    }
+    
+    const burgRating = function (feed, i, array) {
+      return feed.comment.includes('burg');
+    }
+    */
+
+    /* This is OK and it works!!! 
+    const burgRating = feedback.find((fb) => fb.comment.includes('burg'));
+    console.log(burgRating);
+    */
+
+    // HIGH ORDER FUNCTIONS
+    function findByWord(word) {
+      return function (singleFeedback) {
+        return singleFeedback.comment.includes(word);
+      };
+    }
+
+    const burgRating = feedback.find(findByWord('burg'));
+    console.log(burgRating);
+    const smoothieRating = feedback.find(findByWord('Smoothie'));
+    console.log(smoothieRating);
+
     // find all ratings that are above 2 with filter()
+    /*
+    const goodReviews = feedback.filter(
+      (singleFeedback) => singleFeedback.rating > 2
+    );
+    */
+
+    function filterByMinRating(minRating) {
+      return function (singleFeedback) {
+        return singleFeedback.rating > minRating;
+      };
+    }
+
+    const goodReviews = feedback.filter(filterByMinRating(4));
+    console.log(goodReviews);
+    console.table(feedback);
     // find all ratings that talk about a burger with filter()
+    const allBurgRating = feedback.filter(findByWord('burg'));
+    console.log(allBurgRating);
     // Remove the one star rating however you like!
-
+    const legitRating = feedback.filter((single) => single.rating !== 1);
+    console.table(legitRating);
     // check if there is at least 5 of one type of meat with some()
+    const isThereEnoughOfAtLeastOneMeat = Object.values(meats).some(
+      (meatValue) => meatValue >= 5
+    );
+    console.log(isThereEnoughOfAtLeastOneMeat);
     // make sure we have at least 3 of every meat with every()
+    const isThereEnoughOfAtLeastOfEveryMeath = Object.values(meats).every(
+      (meatValue) => meatValue >= 3
+    );
+    console.log(isThereEnoughOfAtLeastOfEveryMeath);
     // sort the toppings alphabetically with sort()
-    // sort the order totals from most expensive to least with .sort()
-    // Sort the prices with sort()
+    const numbers = [1, 2, 100, 3, 200, 400, 155];
+    const numberSorted = numbers.sort(
+      (firstItem, secondItem) => firstItem - secondItem
+    );
+    console.log(numberSorted);
 
+    console.log(toppings.sort());
+    // sort the order totals from most expensive to least with .sort()
+    const orderedTotals = orderTotals.sort(
+      (firstItem, secondItem) => secondItem - firstItem
+    );
+    console.log(orderedTotals);
+    // Sort the prices with sort()
+    const productsSortedByPrice = Object.entries(prices).sort((a, b) => {
+      const aPrice = a[1];
+      const bPrice = b[1];
+      return aPrice - bPrice;
+    });
+    console.table(productsSortedByPrice);
     /*
       Looping Methods (next)
     */
