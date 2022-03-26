@@ -70,7 +70,9 @@ function Gallery(gallery) {
   images.forEach((image) => {
     // attach an event listener for each image
     image.addEventListener('keyup', (e) => {
+      // when that is keyup, check if it was enter
       if (e.key === 'Enter') {
+        // if it was, show that image
         showImage(e.currentTarget);
       }
     });
