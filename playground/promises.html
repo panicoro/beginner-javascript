@@ -10,7 +10,30 @@
 
 <body>
   <script>
+    function makePizza(toppings) {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          // When you are ready, you can resolve this promise
+          resolve(
+            `Here is your pizza 🍕 with your toppings ${toppings.join(', ')}`
+          );
+        }, 1000);
+        // if something went wrong, we can reject this promise
+      });
+    }
 
+    makePizza(['pepperoni'])
+      .then((pizza) => {
+        console.log(pizza);
+        return makePizza(['ham', 'cheese']);
+      })
+      .then((pizza) => {
+        console.log(pizza);
+        return makePizza(['hot peppers', 'onion', 'feta']);
+      })
+      .then((pizza) => {
+        console.log(pizza);
+      });
   </script>
 </body>
 
