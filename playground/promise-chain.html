@@ -77,9 +77,32 @@
           el.classList.add('fadeOut');
         });
     }
+
+    async function animate2(e) {
+      const el = e.currentTarget;
+      // 1- Change the text to Go when clicked.
+      el.textContent = 'Go';
+      // 1. Make it a circle after 2 seconds
+      await wait(200);
+      el.classList.add('circle');
+      // 1. Make it red after 0.5 seconds
+      await wait(500);
+      el.classList.add('red');
+      // 1. Make it square after 0.25 seconds
+      await wait(250);
+      el.classList.remove('circle');
+      // 1. Make it purple after 0.3 seconds
+      wait(300);
+      el.classList.remove('red');
+      el.classList.add('purple');
+      wait(500);
+      // 1. Fade out after 0.5s;
+      el.classList.add('fadeOut');
+    }
+
     const go = document.querySelector('.go');
 
-    go.addEventListener('click', animate);
+    go.addEventListener('click', animate2);
   </script>
 </body>
 

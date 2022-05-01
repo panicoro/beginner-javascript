@@ -10,7 +10,63 @@
 
 <body>
   <script>
+    function wait(ms = 0) {
+      return new Promise((resolve) => {
+        setTimeout(resolve, ms);
+      });
+    }
 
+    async function go() {
+      console.log('Starting');
+      await wait(2000);
+      console.log('Running');
+      await wait(200);
+      console.log('Ending');
+    }
+
+    go();
+    /* 
+    // Function declaration
+    async function fd() { }
+    // arrow function
+    const arrowFn = async () => { };
+
+    // Callback function
+    window.addEventListener('click', async () => { });
+
+    // Methods
+    const person = {
+      // method shorthand
+      async sayHi() { },
+      // function property
+      sayHey: async () => { },
+    }; */
+
+    function makePizza(toppings = []) {
+      return new Promise((resolve, reject) => {
+        // reject if people try with pineapple
+        if (toppings.includes('pineapple')) {
+          // eslint-disable-next-line prefer-promise-reject-errors
+          reject('Seriously? Get out 🍍');
+        }
+        const amountOfTimeToBake = 500 + toppings.length * 200;
+        setTimeout(() => {
+          // When you are ready, you can resolve this promise
+          resolve(
+            `Here is your pizza 🍕 with your toppings ${toppings.join(', ')}`
+          );
+        }, amountOfTimeToBake);
+      });
+    }
+
+    async function makeDinner() {
+      const pizzaPromise1 = makePizza(['pepperoni']);
+      const pizzaPromise2 = makePizza(['mushrooms']);
+      const [pep, mush] = await Promise.all([pizzaPromise1, pizzaPromise2]);
+      console.log(pep, mush);
+    }
+
+    makeDinner();
   </script>
 </body>
 
